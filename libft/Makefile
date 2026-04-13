@@ -5,32 +5,32 @@
 #                                                      +:+                     #
 #    By: pride-ol <pride-ol@student.42.fr>            +#+                      #
 #                                                    +#+                       #
-#    Created: 2026/04/13 13:02:20 by pride-ol      #+#    #+#                  #
-#    Updated: 2026/04/13 15:00:31 by pride-ol      ########   odam.nl          #
+#    Created: 2026/03/11 14:28:51 by pride-ol      #+#    #+#                  #
+#    Updated: 2026/03/28 13:20:00 by pride-ol      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Ilibft
+CFLAGS = -Wall -Wextra -Werror
+SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c \
+ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c \
+ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c \
+ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
+ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
+ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-# libft variables
-LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
-
-SRCS = push_swap.c push.c swap.c rotate.c rev_rotate.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
-$(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-$(LIBFT):
-	make -C $(LIBFT_DIR)
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 clean:
 	rm -f $(OBJS)
-	make -C $(LIBFT_DIR) clean
 fclean: clean
 	rm -f $(NAME)
-	make -C $(LIBFT_DIR) fclean
 re: fclean all
 .PHONY: all re clean fclean

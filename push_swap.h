@@ -3,53 +3,66 @@
 /*                                                        ::::::::            */
 /*   push_swap.h                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pride-ol <pride-ol@student.42.fr>            +#+                     */
+/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 13:54:18 by pride-ol      #+#    #+#                 */
-/*   Updated: 2026/04/13 15:26:02 by pride-ol      ########   odam.nl         */
+/*   Updated: 2026/04/20 18:55:54 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft.h"
-# include <unistd.h>
+# include "libft/libft.h"
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_node
 {
 	int				value;
 	struct s_node	*next;
 	struct s_node	*prev;
-}	t_node;
+}					t_node;
 
-typedef struct	s_stack
+typedef struct s_stack
 {
-	t_node	*top;
-	t_node	*bottom;
-	int		size;
-}	t_stack;
+	t_node			*top;
+	t_node			*bottom;
+	int				size;
+}					t_stack;
 
-//main function
-void	sort_handler(t_stack *a, t_stack *b);
+// main function
+void				sort_handler(t_stack *a, t_stack *b);
 
-//swap funtions
-void	sa(t_stack *a);
-void	sb(t_stack *b);
-void	ss(t_stack *a, t_stack *b);
+//helper functions
+int					valid_number(char *str);
+int					check_duplicates(t_stack *a, int n);
+long				ft_atol(char *str);
+void				error_exit(t_stack *a, t_stack *b);
 
-//push funtions
-void	pa(t_stack *a, t_stack *b);
-void	pb(t_stack *a, t_stack *b);
+//parsing functions
+int					fill_stack(t_stack *a, int argc, char **argv);
+static int			process_number(t_stack *a, char *str);
+static 				add_to_stack_bottom(t_stack *stack, int val);
+static void			free_array(char **array);
 
-//rotate functions
-void	ra(t_stack *a);
-void	rb(t_node *b);
-void	rr(t_node *a, t_stack *b);
+// swap funtions
+void				sa(t_stack *a);
+void				sb(t_stack *b);
+void				ss(t_stack *a, t_stack *b);
 
-//reverse rotate functions
-void	rra(t_stack *a);
-void	rrb(t_node *b);
-void	rrr(t_stack *a, t_stack *b);
+// push funtions
+void				pa(t_stack *a, t_stack *b);
+void				pb(t_stack *a, t_stack *b);
+
+// rotate functions
+void				ra(t_stack *a);
+void				rb(t_stack *b);
+void				rr(t_stack *a, t_stack *b);
+
+// reverse rotate functions
+void				rra(t_stack *a);
+void				rrb(t_stack *b);
+void				rrr(t_stack *a, t_stack *b);
+
 #endif

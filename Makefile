@@ -3,10 +3,10 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: pride-ol <pride-ol@student.42.fr>            +#+                      #
+#    By: bandrade <bandrade@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2026/04/13 13:02:20 by pride-ol      #+#    #+#                  #
-#    Updated: 2026/04/13 15:00:31 by pride-ol      ########   odam.nl          #
+#    Updated: 2026/04/20 17:11:25 by pride-ol      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,14 @@ CFLAGS = -Wall -Wextra -Werror -Ilibft
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRCS = push_swap.c push.c swap.c rotate.c rev_rotate.c
+SRCS = main.c \
+	 sort_handler.c \
+	 parsing.c \
+	 helper_functions.c \
+	 push.c \
+	 swap.c \
+	 rotate.c \
+	 rev_rotate.c 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

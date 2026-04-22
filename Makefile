@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
-#                                                      +:+                     #
-#    By: bandrade <bandrade@student.42.fr>            +#+                      #
-#                                                    +#+                       #
-#    Created: 2026/04/13 13:02:20 by pride-ol      #+#    #+#                  #
-#    Updated: 2026/04/22 14:35:45 by pride-ol      ########   odam.nl          #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/04/13 13:02:20 by pride-ol          #+#    #+#              #
+#    Updated: 2026/04/22 16:45:50 by bandrade         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,9 @@ CFLAGS = -Wall -Wextra -Werror -Ilibft
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRCS = sort_handler.c \
-	sorting_helpers.c \	
+SRCS = main.c \
+	sort_handler.c \
+	sorting_helpers.c \
 	parsing.c \
 	parsing_helpers.c \
 	push.c \

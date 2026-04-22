@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parsing.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/04/15 15:19:15 by bandrade      #+#    #+#                 */
-/*   Updated: 2026/04/22 12:09:28 by pride-ol      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/15 15:19:15 by bandrade          #+#    #+#             */
+/*   Updated: 2026/04/22 16:48:29 by bandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static int	process_number(t_stack *a, char *str);
-static add_to_stack_bottom(t_stack *stack, int val);
+static void	add_to_stack_bottom(t_stack *stack, int val);
 static void	free_array(char **array);
 
 int	fill_stack(t_stack *a, int argc, char **argv)
 {
 	int		i;
 	int		j;
-	char	**temp_args
-	
+	char	**temp_args;
+
 	i = 1;
 	while (i < argc)
 	{
@@ -36,7 +36,7 @@ int	fill_stack(t_stack *a, int argc, char **argv)
 			j++;
 		}
 		free_array(temp_args);
-		i++;	
+		i++;
 	}
 	return (1);
 }
@@ -44,7 +44,7 @@ int	fill_stack(t_stack *a, int argc, char **argv)
 static int	process_number(t_stack *a, char *str)
 {
 	long	value;
-	
+
 	if (!valid_number(str))
 		return (0);
 	value = ft_atol(str);
@@ -56,13 +56,13 @@ static int	process_number(t_stack *a, char *str)
 	return (1);
 }
 
-add_to_stack_bottom(t_stack *stack, int val)
+static void	add_to_stack_bottom(t_stack *stack, int val)
 {
 	t_node	*new_node;
-	
+
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
-		error_exit (stack);
+		error_exit(stack, NULL);
 	new_node->value = val;
 	new_node->next = NULL;
 	if (stack->size == 0)
@@ -75,10 +75,9 @@ add_to_stack_bottom(t_stack *stack, int val)
 	{
 		new_node->prev = stack->bottom;
 		stack->bottom->next = new_node;
-		stack->bottom = new_node;		
+		stack->bottom = new_node;
 	}
 	stack->size++;
-	
 }
 
 void	free_array(char **array)

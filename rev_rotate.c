@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rev_rotate.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 13:51:54 by pride-ol          #+#    #+#             */
-/*   Updated: 2026/04/22 17:34:15 by bandrade         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   rev_rotate.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/13 13:51:54 by pride-ol      #+#    #+#                 */
+/*   Updated: 2026/04/22 18:48:48 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	reverse_rotate(t_stack *stack)
+static void	reverse_rotate(t_list *stack)
 {
 	t_node	*last;
 
@@ -27,19 +27,19 @@ static void	reverse_rotate(t_stack *stack)
 	stack->top = last;
 }
 
-void	rra(t_stack *a)
+void	rra(t_list *a)
 {
 	reverse_rotate(a);
 	write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack *b)
+void	rrb(t_list *b)
 {
 	reverse_rotate(b);
 	write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rrr(t_list *a, t_list *b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);

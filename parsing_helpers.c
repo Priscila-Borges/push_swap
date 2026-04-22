@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing_helpers.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 15:05:34 by pride-ol          #+#    #+#             */
-/*   Updated: 2026/04/22 18:04:20 by bandrade         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parsing_helpers.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/20 15:05:34 by pride-ol      #+#    #+#                 */
+/*   Updated: 2026/04/22 18:48:48 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	valid_number(char *str)
 	return (1);
 }
 
-int	check_duplicates(t_stack *a, int n)
+int	check_duplicates(t_list *a, int n)
 {
 	t_node	*current;
 
@@ -71,7 +71,7 @@ long	ft_atol(char *str)
 	return (number * sign);
 }
 
-static void	free_stack(t_stack *s)
+static void	free_stack(t_list *s)
 {
 	t_node	*current;
 	t_node	*next;
@@ -90,7 +90,7 @@ static void	free_stack(t_stack *s)
 	s->size = 0;
 }
 
-void	error_exit(t_stack *a, t_stack *b)
+void	error_exit(t_list *a, t_list *b)
 {
 	if (a)
 		free_stack(a);

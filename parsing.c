@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/15 15:19:15 by bandrade          #+#    #+#             */
-/*   Updated: 2026/04/22 16:48:29 by bandrade         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parsing.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/15 15:19:15 by bandrade      #+#    #+#                 */
+/*   Updated: 2026/04/22 18:48:48 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	process_number(t_stack *a, char *str);
-static void	add_to_stack_bottom(t_stack *stack, int val);
+static int	process_number(t_list *a, char *str);
+static void	add_to_stack_bottom(t_list *stack, int val);
 static void	free_array(char **array);
 
-int	fill_stack(t_stack *a, int argc, char **argv)
+int	fill_stack(t_list *a, int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -41,7 +41,7 @@ int	fill_stack(t_stack *a, int argc, char **argv)
 	return (1);
 }
 
-static int	process_number(t_stack *a, char *str)
+static int	process_number(t_list *a, char *str)
 {
 	long	value;
 
@@ -56,7 +56,7 @@ static int	process_number(t_stack *a, char *str)
 	return (1);
 }
 
-static void	add_to_stack_bottom(t_stack *stack, int val)
+static void	add_to_stack_bottom(t_list *stack, int val)
 {
 	t_node	*new_node;
 

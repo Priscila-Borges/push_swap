@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 13:51:35 by pride-ol          #+#    #+#             */
-/*   Updated: 2026/04/15 16:55:58 by bandrade         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   push.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/13 13:51:35 by pride-ol      #+#    #+#                 */
+/*   Updated: 2026/04/22 18:48:48 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push(t_stack *src, t_stack *dest)
+static void	push(t_list *src, t_list *dest)
 {
 	t_node	*node;
 
@@ -35,13 +35,13 @@ static void	push(t_stack *src, t_stack *dest)
 	dest->size++;
 }
 
-void	pb(t_stack *a, t_stack *b)
+void	pb(t_list *a, t_list *b)
 {
 	push(a, b);
 	write(1, "pb\n", 3);
 }
 
-void	pa(t_stack *a, t_stack *b)
+void	pa(t_list *a, t_list *b)
 {
 	push(b, a);
 	write(1, "pa\n", 3);

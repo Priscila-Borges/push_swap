@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sort_handler.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 13:02:25 by pride-ol          #+#    #+#             */
-/*   Updated: 2026/04/22 17:58:10 by bandrade         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   sort_handler.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/13 13:02:25 by pride-ol      #+#    #+#                 */
+/*   Updated: 2026/04/22 18:48:48 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_handler(t_stack *a, t_stack *b)
+void	sort_handler(t_list *a, t_list *b)
 // {
 // 	double	disorder;
 

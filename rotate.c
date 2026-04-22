@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 13:52:12 by pride-ol          #+#    #+#             */
-/*   Updated: 2026/04/15 16:57:37 by bandrade         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   rotate.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/13 13:52:12 by pride-ol      #+#    #+#                 */
+/*   Updated: 2026/04/22 18:48:48 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rotate(t_stack *stack)
+static void	rotate(t_list *stack)
 {
 	t_node	*first;
 
@@ -27,19 +27,19 @@ static void	rotate(t_stack *stack)
 	stack->bottom = first;
 }
 
-void	ra(t_stack *a)
+void	ra(t_list *a)
 {
 	rotate(a);
 	write(1, "ra\n", 3);
 }
 
-void	rb(t_stack *b)
+void	rb(t_list *b)
 {
 	rotate(b);
 	write(1, "rb\n", 3);
 }
 
-void	rr(t_stack *a, t_stack *b)
+void	rr(t_list *a, t_list *b)
 {
 	rotate(a);
 	rotate(b);

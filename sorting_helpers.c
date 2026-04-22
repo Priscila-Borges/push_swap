@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sorting_helpers.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/22 12:33:34 by pride-ol          #+#    #+#             */
-/*   Updated: 2026/04/22 16:48:09 by bandrade         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   sorting_helpers.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/22 12:33:34 by pride-ol      #+#    #+#                 */
+/*   Updated: 2026/04/22 18:48:48 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int		*make_array(t_stack *a);
-static t_node	*get_node_at_index(t_stack *a, int index);
+static int		*make_array(t_list *a);
+static t_node	*get_node_at_index(t_list *a, int index);
 
-double	compute_disorder(t_stack *a)
+double	compute_disorder(t_list *a)
 {
 	int	mistakes;
 	int	total_pairs;
@@ -42,7 +42,7 @@ double	compute_disorder(t_stack *a)
 	return ((double)mistakes / total_pairs);
 }
 
-static int	*make_array(t_stack *a)
+static int	*make_array(t_list *a)
 {
 	int	*array;
 	int	i;
@@ -59,7 +59,7 @@ static int	*make_array(t_stack *a)
 	return (array);
 }
 
-static t_node	*get_node_at_index(t_stack *a, int index)
+static t_node	*get_node_at_index(t_list *a, int index)
 {
 	t_node	*current;
 	int		i;

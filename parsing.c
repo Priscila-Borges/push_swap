@@ -6,7 +6,7 @@
 /*   By: bandrade <bandrade@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 15:19:15 by bandrade      #+#    #+#                 */
-/*   Updated: 2026/04/20 16:50:51 by pride-ol      ########   odam.nl         */
+/*   Updated: 2026/04/22 12:09:28 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	fill_stack(t_stack *a, int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		temp_args = ft_split(argv[i], '');
+		temp_args = ft_split(argv[i], ' ');
 		if (!temp_args || !temp_args[0])
 			return (free_array(temp_args), 0);
 		j = 0;

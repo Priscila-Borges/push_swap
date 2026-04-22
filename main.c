@@ -6,7 +6,7 @@
 /*   By: bandrade <bandrade@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 15:34:55 by bandrade      #+#    #+#                 */
-/*   Updated: 2026/04/20 17:04:40 by pride-ol      ########   odam.nl         */
+/*   Updated: 2026/04/22 14:43:08 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 	init_stack(&b);
 	if (!fill_stack(&a, argc, argv))
 		error_exit(&a);
+	sort_handler (&a, &b);
 	free(&a);
 	free(&b);
 	return (0);

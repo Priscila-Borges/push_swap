@@ -6,7 +6,7 @@
 /*   By: bandrade <bandrade@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/20 15:05:34 by pride-ol      #+#    #+#                 */
-/*   Updated: 2026/04/22 18:48:48 by pride-ol      ########   odam.nl         */
+/*   Updated: 2026/04/26 12:12:36 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,33 +69,4 @@ long	ft_atol(char *str)
 		i++;
 	}
 	return (number * sign);
-}
-
-static void	free_stack(t_list *s)
-{
-	t_node	*current;
-	t_node	*next;
-
-	if (!s || !s->top)
-		return ;
-	current = s->top;
-	while (current)
-	{
-		next = current->next;
-		free(current);
-		current = next;
-	}
-	s->top = NULL;
-	s->bottom = NULL;
-	s->size = 0;
-}
-
-void	error_exit(t_list *a, t_list *b)
-{
-	if (a)
-		free_stack(a);
-	if (b)
-		free_stack(b);
-	write(2, "Error\n", 6);
-	exit(1);
 }

@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/04/13 13:02:20 by pride-ol          #+#    #+#              #
-#    Updated: 2026/04/22 16:45:50 by bandrade         ###   ########.fr        #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: bandrade <bandrade@student.42.fr>            +#+                      #
+#                                                    +#+                       #
+#    Created: 2026/04/13 13:02:20 by pride-ol      #+#    #+#                  #
+#    Updated: 2026/04/26 16:00:03 by pride-ol      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,9 @@ SRCS = main.c \
 	sorting_helpers.c \
 	parsing.c \
 	parsing_helpers.c \
+	small_disorder.c \
+	small_disorder_helpers.c \
+	utils.c \
 	push.c \
 	swap.c \
 	rotate.c \

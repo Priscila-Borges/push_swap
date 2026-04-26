@@ -6,17 +6,17 @@
 /*   By: bandrade <bandrade@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 15:19:15 by bandrade      #+#    #+#                 */
-/*   Updated: 2026/04/22 18:48:48 by pride-ol      ########   odam.nl         */
+/*   Updated: 2026/04/26 12:17:09 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static int	process_number(t_list *a, char *str);
-static void	add_to_stack_bottom(t_list *stack, int val);
+static void	add_to_list_bottom(t_list *stack, int val);
 static void	free_array(char **array);
 
-int	fill_stack(t_list *a, int argc, char **argv)
+int	fill_list(t_list *a, int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -52,32 +52,32 @@ static int	process_number(t_list *a, char *str)
 		return (0);
 	if (check_duplicates(a, (int)value))
 		return (0);
-	add_to_stack_bottom(a, (int)value);
+	add_to_list_bottom(a, (int)value);
 	return (1);
 }
 
-static void	add_to_stack_bottom(t_list *stack, int val)
+static void	add_to_list_bottom(t_list *list, int val)
 {
 	t_node	*new_node;
 
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
-		error_exit(stack, NULL);
+		error_exit(list, NULL);
 	new_node->value = val;
 	new_node->next = NULL;
-	if (stack->size == 0)
+	if (list->size == 0)
 	{
 		new_node->prev = NULL;
-		stack->top = new_node;
-		stack->bottom = new_node;
+		list->top = new_node;
+		list->bottom = new_node;
 	}
 	else
 	{
-		new_node->prev = stack->bottom;
-		stack->bottom->next = new_node;
-		stack->bottom = new_node;
+		new_node->prev = list->bottom;
+		list->bottom->next = new_node;
+		list->bottom = new_node;
 	}
-	stack->size++;
+	list->size++;
 }
 
 void	free_array(char **array)

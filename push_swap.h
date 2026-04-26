@@ -6,7 +6,7 @@
 /*   By: bandrade <bandrade@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 13:54:18 by pride-ol      #+#    #+#                 */
-/*   Updated: 2026/04/22 18:47:20 by pride-ol      ########   odam.nl         */
+/*   Updated: 2026/04/26 16:38:31 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,26 @@ void				sort_handler(t_list *a, t_list *b);
 double				compute_disorder(t_list *a);
 
 // parsing function
-int					fill_stack(t_list *a, int argc, char **argv);
+int					fill_list(t_list *a, int argc, char **argv);
 
 // parsing helper functions
 int					valid_number(char *str);
 int					check_duplicates(t_list *a, int n);
 long				ft_atol(char *str);
+
+// utils functions
+void				init_list(t_list *list);
+int					is_sorted(t_list *a);
+void				free_list(t_list *s);
 void				error_exit(t_list *a, t_list *b);
-// void				free_stack(t_list *s);
+
+// small disorder sort functions
+void				fix_almost_sorted(t_list *a, t_list *b);
+t_node				*misplaced_node(t_list *a);
+int					distance_bottom(t_list *a, t_node *target);
+int					distance_top(t_list *a, t_node *target);
+t_node				*find_smallest(t_list *a);
+t_node				*find_largest(t_list *a);
 
 // swap funtions
 void				sa(t_list *a);

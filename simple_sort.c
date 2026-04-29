@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/15 15:34:55 by bandrade          #+#    #+#             */
-/*   Updated: 2026/04/29 11:34:30 by bandrade         ###   ########.fr       */
+/*   Created: 2026/04/28 13:50:07 by bandrade          #+#    #+#             */
+/*   Updated: 2026/04/28 17:36:40 by bandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	main(int argc, char **argv)
+static void	push_smallest(t_list *a, t_list *b)
 {
-	t_list	a;
-	t_list	b;
+	t_node	*min;
 
-	if (argc < 2)
-		return (0);
-	init_list(&a);
-	init_list(&b);
-	if (!fill_list(&a, argc, argv))
-		error_exit(&a, &b);
-	index_stack(&a);
-	sort_handler(&a, &b);
-	free_list(&a);
-	free_list(&b);
-	return (0);
+	min = find_smallest(a);
+	rotate_to_node(a, min);
+	pb(a, b);
+}
+
+void	simple_sort(t_list *a, t_list *b)
+{
+	while (a->size > 0)
+		push_smallest(a, b);
+	while (b->size > 0)
+		pa(a, b);
 }

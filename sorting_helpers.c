@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   sorting_helpers.c                                  :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/04/22 12:33:34 by pride-ol      #+#    #+#                 */
-/*   Updated: 2026/04/22 18:48:48 by pride-ol      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   sorting_helpers.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/22 12:33:34 by pride-ol          #+#    #+#             */
+/*   Updated: 2026/04/28 17:27:34 by bandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,59 @@
 
 static int		*make_array(t_list *a);
 static t_node	*get_node_at_index(t_list *a, int index);
+static int		count_mistakes(int *array, int size);
+static int		count_pairs(int size);
 
 double	compute_disorder(t_list *a)
 {
-	int	mistakes;
-	int	total_pairs;
 	int	*array;
-	int	i;
-	int	j;
+	int	mistakes;
+	int	total;
 
 	array = make_array(a);
-	mistakes = 0;
-	total_pairs = 0;
+	if (!array)
+		return (0);
+	mistakes = count_mistakes(array, a->size);
+	total = count_pairs(a->size);
+	free(array);
+	return ((double)mistakes / total);
+}
+
+static int	count_mistakes(int *array, int size)
+{
+	int	i;
+	int	j;
+	int	mistakes;
+
 	i = 0;
-	while (i < a->size - 1)
+	mistakes = 0;
+	while (i < size - 1)
 	{
 		j = i + 1;
-		while (j < a->size)
+		while (j < size)
 		{
-			total_pairs += 1;
 			if (array[i] > array[j])
-				mistakes += 1;
+				mistakes++;
 			j++;
 		}
 		i++;
 	}
-	return ((double)mistakes / total_pairs);
+	return (mistakes);
+}
+
+static int	count_pairs(int size)
+{
+	int	i;
+	int	total;
+
+	i = 0;
+	total = 0;
+	while (i < size - 1)
+	{
+		total += size - i - 1;
+		i++;
+	}
+	return (total);
 }
 
 static int	*make_array(t_list *a)

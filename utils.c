@@ -3,16 +3,15 @@
 /*                                                        ::::::::            */
 /*   utils.c                                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: pride-ol <pride-ol@student.42.fr>            +#+                     */
+/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/26 12:11:50 by pride-ol      #+#    #+#                 */
-/*   Updated: 2026/04/26 16:32:12 by pride-ol      ########   odam.nl         */
+/*   Updated: 2026/04/29 18:55:59 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// initialize list a and b to size 0 and top/bottom to NULL
 void	init_list(t_list *list)
 {
 	list->top = NULL;
@@ -22,16 +21,18 @@ void	init_list(t_list *list)
 
 int	is_sorted(t_list *a)
 {
-    t_node	*current;
+	t_node	*curr;
 
-    current = a->top;
-    while (current && current->next)
-    {
-        if (current->value > current->next->value)
-            return (0);
-        current = current->next;
-    }
-    return (1);
+	if (!a || a->size < 2)
+		return (1);
+	curr = a->top;
+	while (curr && curr->next)
+	{
+		if (curr->value > curr->next->value)
+			return (0);
+		curr = curr->next;
+	}
+	return (1);
 }
 
 void	free_list(t_list *s)

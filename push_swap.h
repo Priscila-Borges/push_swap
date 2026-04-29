@@ -6,7 +6,7 @@
 /*   By: bandrade <bandrade@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 13:54:18 by pride-ol      #+#    #+#                 */
-/*   Updated: 2026/04/26 16:38:31 by pride-ol      ########   odam.nl         */
+/*   Updated: 2026/04/29 19:02:22 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 typedef struct s_node
 {
+	int				index;
 	int				value;
 	struct s_node	*next;
 	struct s_node	*prev;
@@ -47,17 +48,12 @@ long				ft_atol(char *str);
 
 // utils functions
 void				init_list(t_list *list);
-int					is_sorted(t_list *a);
 void				free_list(t_list *s);
 void				error_exit(t_list *a, t_list *b);
-
-// small disorder sort functions
-void				fix_almost_sorted(t_list *a, t_list *b);
-t_node				*misplaced_node(t_list *a);
-int					distance_bottom(t_list *a, t_node *target);
-int					distance_top(t_list *a, t_node *target);
-t_node				*find_smallest(t_list *a);
+void				index_stack(t_list *a);
 t_node				*find_largest(t_list *a);
+int					is_sorted(t_list *a);
+void				rotate_to_node_b(t_list *b, t_node *target);
 
 // swap funtions
 void				sa(t_list *a);
@@ -77,5 +73,18 @@ void				rr(t_list *a, t_list *b);
 void				rra(t_list *a);
 void				rrb(t_list *b);
 void				rrr(t_list *a, t_list *b);
+
+// algorithm functions
+void				sort_3(t_list *a);
+void				sort_5(t_list *a, t_list *b);
+void				simple_sort(t_list *a, t_list *b);
+t_node				*find_smallest(t_list *a);
+int					distance_top(t_list *a, t_node *target);
+int					distance_bottom(t_list *a, t_node *target);
+void				rotate_to_node(t_list *a, t_node *target);
+void				chunk_sort(t_list *a, t_list *b);
+void				index_list(t_list *a);
+int					find_bits(int max_value);
+void				radix_sort(t_list *a, t_list *b);
 
 #endif

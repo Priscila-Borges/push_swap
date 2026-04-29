@@ -1,32 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   chunk_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/15 15:34:55 by bandrade          #+#    #+#             */
-/*   Updated: 2026/04/29 11:34:30 by bandrade         ###   ########.fr       */
+/*   Created: 2026/04/29 18:07:08 by bandrade          #+#    #+#             */
+/*   Updated: 2026/04/29 18:31:09 by bandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	main(int argc, char **argv)
+t_node	*find_largest(t_list *a)
 {
-	t_list	a;
-	t_list	b;
+	t_node	*curr;
+	t_node	*max;
 
-	if (argc < 2)
-		return (0);
-	init_list(&a);
-	init_list(&b);
-	if (!fill_list(&a, argc, argv))
-		error_exit(&a, &b);
-	index_stack(&a);
-	sort_handler(&a, &b);
-	free_list(&a);
-	free_list(&b);
-	return (0);
+	curr = a->top;
+	max = curr;
+	while (curr)
+	{
+		if (curr->value > max->value)
+			max = curr;
+		curr = curr->next;
+	}
+	return (max);
+}
+
+void	rotate_to_node_b(t_list *b, t_node *target)
+{
+	int	top;
+	int	bottom;
+
+	while (b->top != target)
+	{
+		top = distance_top(b, target);
+		bottom = distance_bottom(b, target);
+		if (top <= bottom)
+			rb(b);
+		else
+			rrb(b);
+	}
 }

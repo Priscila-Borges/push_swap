@@ -6,42 +6,20 @@
 /*   By: pride-ol <pride-ol@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/29 14:28:51 by pride-ol      #+#    #+#                 */
-/*   Updated: 2026/04/29 19:03:08 by pride-ol      ########   odam.nl         */
+/*   Updated: 2026/05/03 17:18:49 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void index_list(t_list *a)
-{
-    t_node	*current;
-    t_node	*compare;
-    int		index;
-
-    current = a->top;
-    while (current)
-    {
-        index = 0;
-        compare = a->top;
-        while (compare)
-        {
-            if (current->value > compare->value)
-                index++;
-            compare = compare->next;
-        }
-        current->index = index;
-        current = current->next;
-    }
-}
-
-int	find_bits(int max_value)
+static int	find_bits(int max_value)
 {
 	int	bits;
-	
+
 	bits = 0;
 	while ((max_value >> bits) != 0)
 		bits++;
-	return (bits);	
+	return (bits);
 }
 
 void	radix_sort(t_list *a, t_list *b)

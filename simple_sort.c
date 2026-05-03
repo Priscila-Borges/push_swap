@@ -1,30 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   simple_sort.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 13:50:07 by bandrade          #+#    #+#             */
-/*   Updated: 2026/04/28 17:36:40 by bandrade         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   simple_sort.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/28 13:50:07 by bandrade      #+#    #+#                 */
+/*   Updated: 2026/05/03 17:13:44 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_smallest(t_list *a, t_list *b)
+static t_node	*find_out_of_order(t_list *a)
 {
-	t_node	*min;
+	t_node	*current;
 
-	min = find_smallest(a);
-	rotate_to_node(a, min);
-	pb(a, b);
+	if (!a || !a->top || !a->top->next)
+		return (NULL);
+	current = a->top;
+	while (current->next)
+	{
+		if (current->index > current->next->index)
+			return (current);
+		current = current->next;
+	}
+	if (current->index > a->top->index)
+		return (current);
+	return (NULL);
 }
 
 void	simple_sort(t_list *a, t_list *b)
 {
-	while (a->size > 0)
-		push_smallest(a, b);
+	t_node	*target;
+
+	while (!is_sorted(a))
+	{
+		target = find_out_of_order(a);
+		if (!target)
+			break ;
+		rotate_to_target(a, target, 'a');
+		pb(a, b);
+	}
 	while (b->size > 0)
 		pa(a, b);
 }

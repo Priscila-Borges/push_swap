@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   chunk_sort.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/29 17:18:15 by bandrade          #+#    #+#             */
-/*   Updated: 2026/04/29 18:22:51 by bandrade         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   chunk_sort.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/29 17:18:15 by bandrade      #+#    #+#                 */
+/*   Updated: 2026/05/03 17:12:04 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	process_top(t_list *a, t_list *b, int *i, int limit)
 {
-	if (a->top->value <= *i)
+	if (a->top->index <= *i)
 	{
 		pb(a, b);
 		rb(b);
 		(*i)++;
 	}
-	else if (a->top->value <= limit)
+	else if (a->top->index <= limit)
 	{
 		pb(a, b);
 		(*i)++;
@@ -29,11 +29,20 @@ static void	process_top(t_list *a, t_list *b, int *i, int limit)
 		ra(a);
 }
 
-static int	get_chunk_size(int size)
+static t_node	*find_largest(t_list *a)
 {
-	if (size <= 100)
-		return (15);
-	return (30);
+	t_node	*curr;
+	t_node	*max;
+
+	curr = a->top;
+	max = curr;
+	while (curr)
+	{
+		if (curr->value > max->value)
+			max = curr;
+		curr = curr->next;
+	}
+	return (max);
 }
 
 static void	push_chunks(t_list *a, t_list *b, int size)
@@ -43,7 +52,10 @@ static void	push_chunks(t_list *a, t_list *b, int size)
 	int	limit;
 
 	i = 0;
-	chunk = get_chunk_size(size);
+	if (size <= 100)
+		chunk = 15;
+	else
+		chunk = 30;
 	limit = chunk;
 	while (a->size > 0)
 	{
@@ -60,7 +72,7 @@ static void	push_back(t_list *a, t_list *b)
 	while (b->size > 0)
 	{
 		max = find_largest(b);
-		rotate_to_node_b(b, max);
+		rotate_to_target(b, max, 'b');
 		pa(a, b);
 	}
 }

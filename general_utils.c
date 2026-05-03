@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utils.c                                            :+:    :+:            */
+/*   general_utils.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bandrade <bandrade@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/26 12:11:50 by pride-ol      #+#    #+#                 */
-/*   Updated: 2026/04/29 18:55:59 by pride-ol      ########   odam.nl         */
+/*   Updated: 2026/05/03 17:23:41 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,28 @@ void	init_list(t_list *list)
 	list->top = NULL;
 	list->bottom = NULL;
 	list->size = 0;
+}
+
+void	index_list(t_list *a)
+{
+	t_node	*current;
+	t_node	*compare;
+	int		index;
+
+	current = a->top;
+	while (current)
+	{
+		index = 0;
+		compare = a->top;
+		while (compare)
+		{
+			if (current->value > compare->value)
+				index++;
+			compare = compare->next;
+		}
+		current->index = index;
+		current = current->next;
+	}
 }
 
 int	is_sorted(t_list *a)

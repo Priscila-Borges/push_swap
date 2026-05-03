@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/15 15:34:55 by bandrade          #+#    #+#             */
-/*   Updated: 2026/04/29 11:34:30 by bandrade         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/04/15 15:34:55 by bandrade      #+#    #+#                 */
+/*   Updated: 2026/05/03 17:12:34 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	init_list(&b);
 	if (!fill_list(&a, argc, argv))
 		error_exit(&a, &b);
-	index_stack(&a);
+	index_list(&a);
 	sort_handler(&a, &b);
 	free_list(&a);
 	free_list(&b);

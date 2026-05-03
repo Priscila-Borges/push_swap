@@ -6,7 +6,7 @@
 #    By: bandrade <bandrade@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2026/04/13 13:02:20 by pride-ol      #+#    #+#                  #
-#    Updated: 2026/04/29 19:01:05 by pride-ol      ########   odam.nl          #
+#    Updated: 2026/05/03 16:05:08 by pride-ol      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,15 +22,12 @@ SRCS = main.c \
 	sort_handler.c \
 	sort_3_5.c \
 	simple_sort.c \
-	simple_utils.c \
-	sorting_helpers.c \
-	indexing.c \
 	chunk_sort.c \
-	chunk_utils.c \
 	radix_sort.c \
+	algorithm_utils.c \
 	parsing.c \
 	parsing_helpers.c \
-	utils.c \	
+	general_utils.c \
 	push.c \
 	swap.c \
 	rotate.c \

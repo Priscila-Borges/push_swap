@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   push.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/04/13 13:51:35 by pride-ol      #+#    #+#                 */
-/*   Updated: 2026/04/22 18:48:48 by pride-ol      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/13 13:51:35 by pride-ol          #+#    #+#             */
+/*   Updated: 2026/05/04 16:35:30 by bandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,18 @@ static void	push(t_list *src, t_list *dest)
 	dest->size++;
 }
 
-void	pb(t_list *a, t_list *b)
+void	pb(t_list *a, t_list *b, t_config *config)
 {
 	push(a, b);
 	write(1, "pb\n", 3);
+	if (config && config->bench_mode)
+		config->op_count[4]++;
 }
 
-void	pa(t_list *a, t_list *b)
+void	pa(t_list *a, t_list *b, t_config *config)
 {
 	push(b, a);
 	write(1, "pa\n", 3);
+	if (config && config->bench_mode)
+		config->op_count[3]++;
 }

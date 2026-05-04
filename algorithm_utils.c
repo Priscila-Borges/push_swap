@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   algorithm_utils.c                                  :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: pride-ol <pride-ol@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/05/03 15:31:36 by pride-ol      #+#    #+#                 */
-/*   Updated: 2026/05/03 17:25:07 by pride-ol      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   algorithm_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/03 15:31:36 by pride-ol          #+#    #+#             */
+/*   Updated: 2026/05/04 16:36:47 by bandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static int	distance_top(t_list *list, t_node *target)
 	return (i);
 }
 
-void	rotate_to_target(t_list *list, t_node *target, char name)
+void	r_targ(t_list *list, t_node *target, char name, t_config *config)
 {
-	int	top_distance;	
+	int	top_distance;
 
 	if (!list || !target || list->top == target)
 		return ;
@@ -39,9 +39,9 @@ void	rotate_to_target(t_list *list, t_node *target, char name)
 		while (list->top != target)
 		{
 			if (name == 'a')
-				ra(list);
+				ra(list, config);
 			else
-				rb(list);
+				rb(list, config);
 		}
 	}
 	else
@@ -49,9 +49,9 @@ void	rotate_to_target(t_list *list, t_node *target, char name)
 		while (list->top != target)
 		{
 			if (name == 'a')
-				rra(list);
+				rra(list, config);
 			else
-				rrb(list);
+				rrb(list, config);
 		}
 	}
 }

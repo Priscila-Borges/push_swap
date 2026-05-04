@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   radix_sort.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: pride-ol <pride-ol@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/04/29 14:28:51 by pride-ol      #+#    #+#                 */
-/*   Updated: 2026/05/03 17:18:49 by pride-ol      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   radix_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/29 14:28:51 by pride-ol          #+#    #+#             */
+/*   Updated: 2026/05/04 16:36:30 by bandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ static int	find_bits(int max_value)
 	return (bits);
 }
 
-void	radix_sort(t_list *a, t_list *b)
+void	radix_sort(t_list *a, t_list *b, t_config *config)
 {
 	int	bit;
 	int	bit_max;
-	int	list_size;	
+	int	list_size;
 
-	bit_max = find_bits(a->size -1);
+	bit_max = find_bits(a->size - 1);
 	bit = 0;
 	while (bit < bit_max)
 	{
@@ -36,12 +36,12 @@ void	radix_sort(t_list *a, t_list *b)
 		while (list_size--)
 		{
 			if (((a->top->index >> bit) & 1) == 1)
-				ra(a);
+				ra(a, config);
 			else
-				pb(a, b);
+				pb(a, b, config);
 		}
 		while (b->size > 0)
-			pa(a, b);
+			pa(a, b, config);
 		bit++;
 	}
 }

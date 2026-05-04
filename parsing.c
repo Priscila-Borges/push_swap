@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parsing.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/04/15 15:19:15 by bandrade      #+#    #+#                 */
-/*   Updated: 2026/05/03 17:51:36 by pride-ol      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/15 15:19:15 by bandrade          #+#    #+#             */
+/*   Updated: 2026/05/04 18:59:33 by bandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,26 +66,34 @@ static void	free_array(char **array)
 	free(array);
 }
 
-int	fill_list(t_list *a, int argc, char **argv)
+static int	process_arg(t_list *a, char *arg)
 {
-	int		i;
-	int		j;
 	char	**temp_args;
+	int		j;
 
-	i = 1;
+	temp_args = ft_split(arg, ' ');
+	if (!temp_args || !temp_args[0])
+		return (free_array(temp_args), 0);
+	j = 0;
+	while (temp_args[j])
+	{
+		if (!process_number(a, temp_args[j]))
+			return (free_array(temp_args), 0);
+		j++;
+	}
+	free_array(temp_args);
+	return (1);
+}
+
+int	fill_list(t_list *a, int argc, char **argv, int start)
+{
+	int	i;
+
+	i = start;
 	while (i < argc)
 	{
-		temp_args = ft_split(argv[i], ' ');
-		if (!temp_args || !temp_args[0])
-			return (free_array(temp_args), 0);
-		j = 0;
-		while (temp_args[j])
-		{
-			if (!process_number(a, temp_args[j]))
-				return (free_array(temp_args), 0);
-			j++;
-		}
-		free_array(temp_args);
+		if (!process_arg(a, argv[i]))
+			return (0);
 		i++;
 	}
 	return (1);

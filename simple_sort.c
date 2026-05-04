@@ -6,7 +6,7 @@
 /*   By: bandrade <bandrade@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/28 13:50:07 by bandrade      #+#    #+#                 */
-/*   Updated: 2026/05/03 17:13:44 by pride-ol      ########   odam.nl         */
+/*   Updated: 2026/05/04 16:21:01 by pride-ol      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static t_node	*find_out_of_order(t_list *a)
 	return (NULL);
 }
 
-void	simple_sort(t_list *a, t_list *b)
+void	simple_sort(t_list *a, t_list *b, t_config *config)
 {
 	t_node	*target;
 
@@ -39,9 +39,9 @@ void	simple_sort(t_list *a, t_list *b)
 		target = find_out_of_order(a);
 		if (!target)
 			break ;
-		rotate_to_target(a, target, 'a');
-		pb(a, b);
+		r_targ(a, target, 'a', config);
+		pb(a, b, config);
 	}
 	while (b->size > 0)
-		pa(a, b);
+		pa(a, b, config);
 }

@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   chunk_sort.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/04/29 17:18:15 by bandrade      #+#    #+#                 */
-/*   Updated: 2026/05/03 17:12:04 by pride-ol      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   chunk_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/29 17:18:15 by bandrade          #+#    #+#             */
+/*   Updated: 2026/05/04 16:32:34 by bandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	process_top(t_list *a, t_list *b, int *i, int limit)
+static void	process_top(t_data *d)
 {
-	if (a->top->index <= *i)
+	if (d->a->top->index <= *d->i)
 	{
-		pb(a, b);
-		rb(b);
-		(*i)++;
+		pb(d->a, d->b, d->config);
+		rb(d->b, d->config);
+		(*d->i)++;
 	}
-	else if (a->top->index <= limit)
+	else if (d->a->top->index <= d->limit)
 	{
-		pb(a, b);
-		(*i)++;
+		pb(d->a, d->b, d->config);
+		(*d->i)++;
 	}
 	else
-		ra(a);
+		ra(d->a, d->config);
 }
 
 static t_node	*find_largest(t_list *a)
@@ -45,43 +45,47 @@ static t_node	*find_largest(t_list *a)
 	return (max);
 }
 
-static void	push_chunks(t_list *a, t_list *b, int size)
+static void	push_chunks(t_list *a, t_list *b, int size, t_config *config)
 {
-	int	i;
-	int	chunk;
-	int	limit;
+	int		i;
+	int		chunk;
+	t_data	d;
 
 	i = 0;
 	if (size <= 100)
 		chunk = 15;
 	else
 		chunk = 30;
-	limit = chunk;
+	d.a = a;
+	d.b = b;
+	d.config = config;
+	d.i = &i;
+	d.limit = chunk;
 	while (a->size > 0)
 	{
-		process_top(a, b, &i, limit);
-		if (i >= limit)
-			limit += chunk;
+		process_top(&d);
+		if (i >= d.limit)
+			d.limit += chunk;
 	}
 }
 
-static void	push_back(t_list *a, t_list *b)
+static void	push_back(t_list *a, t_list *b, t_config *config)
 {
 	t_node	*max;
 
 	while (b->size > 0)
 	{
 		max = find_largest(b);
-		rotate_to_target(b, max, 'b');
-		pa(a, b);
+		r_targ(b, max, 'b', config);
+		pa(a, b, config);
 	}
 }
 
-void	chunk_sort(t_list *a, t_list *b)
+void	chunk_sort(t_list *a, t_list *b, t_config *config)
 {
 	int	size;
 
 	size = a->size;
-	push_chunks(a, b, size);
-	push_back(a, b);
+	push_chunks(a, b, size, config);
+	push_back(a, b, config);
 }

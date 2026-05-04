@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   sort_handler.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: bandrade <bandrade@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/04/13 13:02:25 by pride-ol      #+#    #+#                 */
-/*   Updated: 2026/05/03 17:18:06 by pride-ol      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   sort_handler.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bandrade <bandrade@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/13 13:02:25 by pride-ol          #+#    #+#             */
+/*   Updated: 2026/05/04 16:36:07 by bandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,35 @@ static double	compute_disorder(t_list *a)
 	return ((double)mistakes / total_pairs);
 }
 
-void	sort_handler(t_list *a, t_list *b)
+static void	strategies(t_list *a, t_list *b, t_config *config)
 {
-	double	d;
+	if (config->strategy == 1)
+		simple_sort(a, b, config);
+	else if (config->strategy == 2)
+		chunk_sort(a, b, config);
+	else if (config->strategy == 3)
+		radix_sort(a, b, config);
+}
 
+void	sort_handler(t_list *a, t_list *b, t_config *config)
+{
+	config->initial_disorder = compute_disorder(a);
 	if (is_sorted(a))
 		return ;
+	strategies(a, b, config);
 	if (a->size == 2)
-		sa(a);
+		sa(a, config);
 	else if (a->size == 3)
-		sort_3(a);
+		sort_3(a, config);
 	else if (a->size <= 5)
-		sort_5(a, b);
+		sort_5(a, b, config);
 	else
 	{
-		d = compute_disorder(a);
-		if (d < 0.2)
-			simple_sort(a, b);
-		else if (d < 0.5)
-			chunk_sort(a, b);
+		if (config->initial_disorder < 0.2)
+			simple_sort(a, b, config);
+		else if (config->initial_disorder < 0.5)
+			chunk_sort(a, b, config);
 		else
-			radix_sort(a, b);
+			radix_sort(a, b, config);
 	}
 }

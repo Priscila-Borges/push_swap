@@ -2,7 +2,7 @@
 
 ## DESCRIPTION
 
-Push_swap is an algorithmic project at 42 that challenges students to sort a data set on a stack (Stack A) using an auxiliary stack (Stack B) and a restricted set of operations. The primary goal is to calculate and display the shortest possible sequence of instructions to sort the numbers, optimizing performance for various input sizes.
+Push_swap is an algorithmic program to sort a data set on a stack (A) using an auxiliary stack (B) and a restricted set of operations. The primary goal is to calculate and display the shortest possible sequence of instructions to sort the numbers, optimizing performance for various input sizes.
 This implementation includes an integrated benchmark system that analyzes the initial "disorder" of the data and measures the efficiency of different strategies in real-time, outputting detailed metrics to the standard error.
 
 ## INSTRUCTIONS
